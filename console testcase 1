@@ -1,0 +1,15 @@
+int main() {
+    // Test Case 1
+    Point points1[MAX_POINTS] = {
+        {10, 4},
+        {2, 7},
+        {10, 12},
+        {4, 213}
+    };
+    
+    long long secret1;
+    lagrange_interpolation(points1, 4, &secret1);
+    printf("Secret for Test Case 1: %lld\n", secret1);
+
+    return 0;
+}
