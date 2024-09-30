@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+// Include the previous parts of the code here
+
+int main() {
+    // Test Case 2
+    Point points2[MAX_POINTS];
+    char *bases[] = {"10", "16", "12", "11", "16", "10", "14", "9", "8"};
+    char *values[] = {
+        "28735619723837",
+        "1A228867F0CA",
+        "32811A4AA0B7B",
+        "917978721331A",
+        "1A22886782E1",
+        "28735619654702",
+        "71AB5070CC4B",
+        "122662581541670",
+        "642121030037605"
+    };
+
+    for (int i = 0; i < 9; i++) {
+        long long decoded_y;
+        decode_y_value(bases[i], values[i], &decoded_y);
+        points2[i] = (Point){i + 1, decoded_y};
+    }
+
+    long long secret2;
+    lagrange_interpolation(points2, 6, &secret2);
+    printf("Secret for Test Case 2: %lld\n", secret2);
+
+    // Identify wrong points
+    printf("Wrong points in Test Case 2: ");
+    for (int i = 6; i < 9; i++) {
+        printf("(%d, %lld) ", points2[i].x, points2[i].y);
+    }
+    printf("\n");
+
+    return 0;
+}
